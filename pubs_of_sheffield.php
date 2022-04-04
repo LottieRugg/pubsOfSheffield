@@ -1,40 +1,60 @@
 <?php
-// Connect to the main database
-/**
- * Creating a function to connect to the main database
- * @return PDO
- */
-function connectToDatabase(){
-$db = new PDO('mysql:host=db; dbname=pubs_of_sheffield', 'root', 'password');
-return $db;
-}
-
-/**
- * Return list of all items in the database
- *
- * @return mixed
- */
-function getAllItems($db){
-    $returnItems = $db->prepare('SELECT `id`, `name`, `address`, `rating`, `picture`, `what_to_order`, `open_fire` FROM `pubs`;');
-    $returnItems->execute();
-    $itemsList = $returnItems->fetchAll();
-    return $itemsList;
-}
-
-$db= connectToDatabase();
+require 'functions.php';
+$db = connectToDatabase();
 $itemsList = getAllItems($db);
-var_dump($itemsList);
 ?>
 
 <!DOCTYPE html>
 <html>
+<head>
+    <link rel="stylesheet" href="pubs_stylesheet.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200;1,400&display=swap"
+          rel="stylesheet">
+</head>
 <body>
 
 <h1>Pubs of Sheffield</h1>
-<p> The definitive guide to the pubs of Sheffield </p>
+<h3> The definitive guide to the pubs of Sheffield </h3>
 
+<div class="collection_set">
+    <?php foreach ($itemsList as $item) { ?>
+        <div class='collection_item'>
+            <div><h3>
+                    <?php echo $item["name"];
+                    ?></h3></div>
+            <img src="<?php echo $item["picture"]; ?>" class="pub_image">
+            <div class="item_detail">
+                <h6> Where to find <?php echo $item["name"]; ?></h6>:
+                <?php
+                echo $item["address"]; ?></div>
+            <div class="item_detail">
+                <h6> What to order for me if you get to the bar first: </h6>
+                <?php
+                echo $item["what_to_order"]; ?>
+            </div>
+            <div class="item_detail">
+                <h6> Can we sit by the fire? </h6>
+                <?php if ($item['open_fire'] == 1) { ?>
+                    Yes 🔥 !
+                <?php } else { ?>
+                    No, wrap up warm. ❄️ <?php
+                } ?>
+            </div>
+            <div class="item_detail">
 
+                <?php
+                for ($i = 0; $i < $item['rating']; $i++) {
+                    echo "🍺 ";
+                } ?> /10.
+            </div>
+        </div>
+        <?php
 
+    } ?>
+
+</div>
 
 </body>
 </html>
