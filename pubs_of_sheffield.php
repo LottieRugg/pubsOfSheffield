@@ -4,6 +4,7 @@ $db = connectToDatabase();
 $itemsList = getAllItems($db);
 ?>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,40 +20,9 @@ $itemsList = getAllItems($db);
 <h3> The definitive guide to the pubs of Sheffield </h3>
 
 <div class="collection_set">
-    <?php foreach ($itemsList as $item) { ?>
-        <div class='collection_item'>
-            <div><h3>
-                    <?php echo $item["name"];
-                    ?></h3></div>
-            <img src="<?php echo $item["picture"]; ?>" class="pub_image">
-            <div class="item_detail">
-                <h6> Where to find <?php echo $item["name"]; ?></h6>:
-                <?php
-                echo $item["address"]; ?></div>
-            <div class="item_detail">
-                <h6> What to order for me if you get to the bar first: </h6>
-                <?php
-                echo $item["what_to_order"]; ?>
-            </div>
-            <div class="item_detail">
-                <h6> Can we sit by the fire? </h6>
-                <?php if ($item['open_fire'] == 1) { ?>
-                    Yes 🔥 !
-                <?php } else { ?>
-                    No, wrap up warm. ❄️ <?php
-                } ?>
-            </div>
-            <div class="item_detail">
-
-                <?php
-                for ($i = 0; $i < $item['rating']; $i++) {
-                    echo "🍺 ";
-                } ?> /10.
-            </div>
-        </div>
-        <?php
-
-    } ?>
+    <?php
+    echo selectItem($itemsList);
+    ?>
 
 </div>
 
