@@ -9,7 +9,9 @@ session_start()
 <!DOCTYPE html>
 <html>
 <head>
+
     <link rel="stylesheet" href="pubs_stylesheet.css" type="text/css">
+    <title>Pubs of Sheffield</title>
 </head>
 <body>
 
@@ -25,7 +27,7 @@ session_start()
     <div class="collection_item">
         <h3> Add a pub!</h3>
         <h5>Use this form to add new pubs to the collection!</h5>
-        <form method="post" class="input_form">
+        <form method="post" class="input_form" action ="data.php">
             <label>Pub name:
                 <input type="text" name="name" required class="input_item">
             </label>

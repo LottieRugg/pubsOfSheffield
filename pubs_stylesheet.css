@@ -31,16 +31,15 @@ body {
     border-radius: 25px;
     border-color: #1a7599;
     border-width: 10px;
+    background-color: #e1e7ed;
 }
 
 h1 {
-    /*font-family: 'Abril Fatface', cursive;*/
     font-size: 60px;
     text-align: center;
 }
 
 h3 {
-    /*font-family: 'Abril Fatface', cursive;*/
     font-size: 40px;
     text-align: center;
 
@@ -83,8 +82,6 @@ label {
 .open_fire {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-
-
 }
 .open_fire_label{
     align-self: center;
@@ -92,8 +89,6 @@ label {
 .radio_button {
     width: 10%;
     justify-self: center;
-
-
 }
 
 .submit {
