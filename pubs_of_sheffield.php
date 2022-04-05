@@ -2,7 +2,6 @@
 require 'functions.php';
 $db = connectToDatabase();
 $itemsList = getAllItems($db);
-session_start()
 ?>
 
 
