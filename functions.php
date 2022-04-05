@@ -26,6 +26,12 @@ function getAllItems($db): array
 
 }
 
+/**
+ * Displays items from an array as HTML
+ *
+ * @param array $itemsList
+ * @return string
+ */
 function selectItem(array $itemsList): string
 {
     if ($itemsList == [[]]){

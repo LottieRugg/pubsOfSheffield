@@ -3,7 +3,7 @@ require '../functions.php';
 
 use PHPUnit\Framework\TestCase;
 
-class selectItem extends TestCase
+class selectItemTest extends TestCase
 {
     //success test
     public function testSelectItemSuccess()
