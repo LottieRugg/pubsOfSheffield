@@ -1,24 +1,29 @@
 * {
-    box-sizing:border-box;
-}
-body{
-    margin: 0;
-    color: #1a7599;
+    box-sizing: border-box;
 }
 
-.collection_set{
-    display:grid;
+body {
+    margin: 0;
+    color: #1a7599;
+    font-family: "American Typewriter";
+}
+
+.collection_set {
+    display: grid;
     grid-template-columns:1fr 1fr 1fr;
     grid-auto-rows: 1fr;
 }
-body{
+
+body {
     background-color: #d3e2e8;
 }
-.pub_image{
-    object-fit:cover;
+
+.pub_image {
+    object-fit: cover;
     width: 100%;
-    min-height:700px;
+    min-height: 700px;
 }
+
 .collection_item {
     padding: 30px;
     margin: 20px;
@@ -26,29 +31,85 @@ body{
     border-radius: 25px;
     border-color: #1a7599;
     border-width: 10px;
+    background-color: #e1e7ed;
 }
-h1{
-    font-family: 'Abril Fatface', cursive;
+
+h1 {
     font-size: 60px;
     text-align: center;
 }
-h3{
-    font-family: 'Abril Fatface', cursive;
+
+h3 {
     font-size: 40px;
     text-align: center;
 
 }
-.item_detail{
+
+.item_detail {
     padding: 10px;
     margin: 5px;
-    font-family: "American Typewriter";
     font-size: 20px;
 }
-h6{
+
+h6 {
     display: inline;
     font-size: 22px;
 }
-@media only screen and (max-width:1086px){
+
+h5 {
+    font-size: 30px;
+    text-align: center;
+}
+
+.input_form {
+    font-size: 20px;
+}
+
+input {
+    width: 100%;
+    align-self: center;
+    padding: 10px;
+}
+
+.input_item {
+    margin-bottom: 30px;
+}
+
+label {
+    margin-top: 20px;
+}
+
+.open_fire {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.open_fire_label{
+    align-self: center;
+}
+.radio_button {
+    width: 10%;
+    justify-self: center;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+}
+
+.submit_button {
+
+    margin-top: 20px;
+    border-radius: 25px;
+    font-family: "American Typewriter";
+    font-size: 20px;
+    padding: 30px;
+    border-style: none;
+    background-color: #1a7599;
+    color: #FFFFFF;
+
+}
+
+@media only screen and (max-width: 1086px) {
     .collection_set {
         grid-template-columns: 100%;
 
