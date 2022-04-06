@@ -113,7 +113,10 @@ label {
     font-size: 15px;
     color: #FE7E6D;
 }
-
+.edit{
+    width:50%;
+    margin: 10px auto;
+}
 @media only screen and (max-width: 1086px) {
     .collection_set {
         grid-template-columns: 100%;

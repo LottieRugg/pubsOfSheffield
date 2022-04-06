@@ -17,7 +17,7 @@ $itemsList = getAllItems($db);
 <h1>Pubs of Sheffield</h1>
 <h3> The definitive guide to the pubs of Sheffield </h3>
 
-<div class="collection_set">
+<div class="collection_set edit_collection">
     <?php
     echo selectItem($itemsList);
     ?>
