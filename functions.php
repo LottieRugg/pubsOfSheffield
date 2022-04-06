@@ -93,4 +93,3 @@ function cleanInput(string $inputData):string {
 
 
 
-echo cleanInput( "<a href='html'>'specialchars'</a>");
