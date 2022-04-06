@@ -77,3 +77,20 @@ function selectItem(array $itemsList): string
     return $itemResult;
 }
 
+
+/**
+ * Cleans the data input
+ *
+ * @param $inputData
+ * @return string
+ */
+
+function cleanInput(string $inputData):string {
+    $trimmedInput = trim($inputData);
+    return htmlspecialchars($trimmedInput);
+
+}
+
+
+
+echo cleanInput( "<a href='html'>'specialchars'</a>");
