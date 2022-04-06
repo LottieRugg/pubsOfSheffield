@@ -33,7 +33,7 @@ if (isset($_POST["name"])) {
 
     $picture_input = $_POST["picture"];
 
-    if ($_POST["what_to_order"] == "Pint of Carling"){
+     if (strpos($_POST["what_to_order"], 'carling') !== false){
         header("location:pubs_of_sheffield.php?error_what_to_order=There is no chance I am drinking a pint of Carling please try again");
         exit();
     } else{
