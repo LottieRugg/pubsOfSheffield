@@ -26,6 +26,7 @@ function getAllItems($db): array
 
 }
 
+
 /**
  * Displays items from an array as HTML
  *
@@ -70,8 +71,13 @@ function selectItem(array $itemsList): string
                 $itemResult .= "🍺 ";
             }
             $itemResult .= '/10.
-        </div>
-    </div>';
+           
+        </div>';
+                $itemResult .='<a href="edit_a_pub.php?id=';
+                $itemResult .= $item["id"];
+                $itemResult .='"> Edit your pub</a>';
+        
+   $itemResult .= '</div>';
         }
     }
     return $itemResult;

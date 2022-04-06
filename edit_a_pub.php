@@ -1,7 +1,7 @@
 <?php
 require 'functions.php';
 $db = connectToDatabase();
-$id= 1;
+$id= $_GET["id"];
 function getDataForEdit($db,$id){
     $query = $db->prepare("SELECT `id`, `name`, `address`, `rating`, `local_brewery`, `picture`, `what_to_order`, `open_fire` FROM `pubs` WHERE `id` = '$id'");
     $query->execute();
