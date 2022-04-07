@@ -2,8 +2,6 @@
 require 'functions.php';
 $db = connectToDatabase();
 $id = $_POST["id"];
-//$id=5;
-//var_dump($_POST);
 //This page is to edit data in the SQL database
 
 if (isset($_POST["name"])) {
