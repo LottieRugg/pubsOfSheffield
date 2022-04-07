@@ -111,7 +111,7 @@ function cleanInput(string $inputData): string
  */
 function deleteItem($id, $db)
 {
-    $is_deleted=1;
+    $is_deleted = 1;
     $query = $db->prepare("UPDATE `pubs` SET `is_deleted` = :is_deleted WHERE `id` = :id");
     $query->bindParam(':is_deleted', $is_deleted);
     $query->bindParam(':id', $id);
@@ -125,9 +125,12 @@ function deleteItem($id, $db)
  * @param string
  * @return bool
  */
-function carlingValidator(string $order): bool{
+function carlingValidator(string $order): bool
+{
     $carling_query = strtolower($order);
-    if (strpos($carling_query, 'carling') !== false){ return TRUE;}
+    if (strpos($carling_query, 'carling') !== false) {
+        return TRUE;
+    }
     return FALSE;
 
 }
