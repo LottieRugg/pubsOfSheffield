@@ -133,6 +133,15 @@ a {
     text-decoration: none;
     color: #1a7599;
 }
+.youre_barred{
+    background-color: #000000;
+    color: #FFFFFF;
+
+}
+.barred{
+    display: flex;
+    justify-content: center;
+}
 
 @media only screen and (max-width: 1086px) {
     .collection_set {

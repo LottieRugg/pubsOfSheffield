@@ -20,7 +20,7 @@ function connectToDatabase(): PDO
  */
 function getAllItems($db): array
 {
-    $query = $db->prepare('SELECT `id`, `name`, `address`, `rating`, `picture`, `what_to_order`, `open_fire`, `is_deleted` FROM `pubs`;');
+    $query = $db->prepare('SELECT `id`, `name`, `address`, `rating`, `picture`, `what_to_order`, `open_fire` FROM `pubs` WHERE `is_deleted` = 0;');
     $query->execute();
     return $query->fetchAll();
 
@@ -40,9 +40,6 @@ function selectItem(array $itemsList): string
     } else {
         $itemResult = "";
         foreach ($itemsList as $item) {
-            if ($item["is_deleted"]) {
-                continue;
-            }
             $itemResult .= '<div class="collection_item">';
             $itemResult .= '<div><h3>';
             $itemResult .= $item["name"];
@@ -105,5 +102,33 @@ function cleanInput(string $inputData): string
 
 }
 
+/**
+ * deletes a database item
+ *
+ * @param $id
+ * @param $db
+ * @return void
+ */
+function deleteItem($id, $db)
+{
+    $is_deleted=1;
+    $query = $db->prepare("UPDATE `pubs` SET `is_deleted` = :is_deleted WHERE `id` = :id");
+    $query->bindParam(':is_deleted', $is_deleted);
+    $query->bindParam(':id', $id);
+    $query->execute();
+    header("location:pubs_of_sheffield.php");
+}
 
+/**
+ * Making sure no one ever orders a carling.
+ *
+ * @param string
+ * @return bool
+ */
+function carlingValidator(string $order): bool{
+    $carling_query = strtolower($order);
+    if (strpos($carling_query, 'carling') !== false){ return TRUE;}
+    return FALSE;
+
+}
 

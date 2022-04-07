@@ -33,8 +33,8 @@ if (isset($_POST["name"])) {
     }
     $picture_input = $_POST["picture"];
     $carling_query = strtolower($_POST['what_to_order']);
-    if (strpos($carling_query, 'carling') !== false) {
-        header("location:edit_a_pub.php?id={$id}&error_what_to_order_edit=Please don't order me a Carling!");
+    if (carlingValidator($_POST["what_to_order"])) {
+        header("location:get_out_of_my_pub.php");
         exit();
     } else {
         $what_to_order_input = cleanInput($_POST["what_to_order"]);

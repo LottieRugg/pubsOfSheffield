@@ -33,16 +33,13 @@ if (isset($_POST["name"])) {
 
     $picture_input = $_POST["picture"];
 
-    $carling_query = strtolower($_POST['what_to_order']);
-    if (strpos($carling_query, 'carling') !== false) {
-        header("location:pubs_of_sheffield.php?error_what_to_order=There is no chance I am drinking a pint of Carling please try again");
+    if (carlingValidator($_POST["what_to_order"])) {
+        header("location:get_out_of_my_pub.php");
         exit();
     } else {
         $what_to_order_input = cleanInput($_POST["what_to_order"]);
     }
-
     $open_fire_input = cleanInput($_POST["open_fire"]);
-
 }
 
 $query = $db->prepare("INSERT INTO `pubs` (`name`, `address`, `rating`, `local_brewery`, `picture`, `what_to_order`, `open_fire`)
