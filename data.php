@@ -24,7 +24,7 @@ if (isset($_POST["name"])) {
         exit();
     }
 
-    if ((strlen($_POST["local_brewery"]) >= 4) OR ($_POST["local_brewery"] == "")){
+    if ((strlen($_POST["local_brewery"]) >= 4) or ($_POST["local_brewery"] == "")) {
         $local_brewery_input = cleanInput($_POST["local_brewery"]);
     } else {
         header("location:pubs_of_sheffield.php?error_brewery=They don't brew beer there! Please enter a valid brewery or leave blank");
@@ -33,10 +33,11 @@ if (isset($_POST["name"])) {
 
     $picture_input = $_POST["picture"];
 
-     if (strpos($_POST["what_to_order"], 'carling') !== false){
+    $carling_query = strtolower($_POST['what_to_order']);
+    if (strpos($carling_query, 'carling') !== false) {
         header("location:pubs_of_sheffield.php?error_what_to_order=There is no chance I am drinking a pint of Carling please try again");
         exit();
-    } else{
+    } else {
         $what_to_order_input = cleanInput($_POST["what_to_order"]);
     }
 

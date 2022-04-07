@@ -20,7 +20,7 @@ function connectToDatabase(): PDO
  */
 function getAllItems($db): array
 {
-    $query = $db->prepare('SELECT `id`, `name`, `address`, `rating`, `picture`, `what_to_order`, `open_fire` FROM `pubs`;');
+    $query = $db->prepare('SELECT `id`, `name`, `address`, `rating`, `picture`, `what_to_order`, `open_fire`, `is_deleted` FROM `pubs`;');
     $query->execute();
     return $query->fetchAll();
 
@@ -35,11 +35,14 @@ function getAllItems($db): array
  */
 function selectItem(array $itemsList): string
 {
-    if ($itemsList == [[]]){
+    if ($itemsList == [[]]) {
         return 'This collection has no items in it yet!';
-    } else{
+    } else {
         $itemResult = "";
         foreach ($itemsList as $item) {
+            if ($item["is_deleted"]) {
+                continue;
+            }
             $itemResult .= '<div class="collection_item">';
             $itemResult .= '<div><h3>';
             $itemResult .= $item["name"];
@@ -73,11 +76,15 @@ function selectItem(array $itemsList): string
             $itemResult .= '/10.
            
         </div>';
-                $itemResult .='<a href="edit_a_pub.php?id=';
-                $itemResult .= $item["id"];
-                $itemResult .='"> Edit your pub</a>';
-        
-   $itemResult .= '</div>';
+            $itemResult .= '<div class="buttons"> <a href="edit_a_pub.php?id=';
+            $itemResult .= $item["id"];
+            $itemResult .= '" class="edit_button"> <i class="fa-solid fa-pencil fa-2x"></i></a>';
+            $itemResult .= '<a href="delete_from_collection.php?id=';
+            $itemResult .= $item["id"];
+            $itemResult .= '" class="delete_button"> <i class="fa-solid fa-trash-can fa-2x button"></i></a>';
+
+
+            $itemResult .= '</div></div>';
         }
     }
     return $itemResult;
@@ -91,7 +98,8 @@ function selectItem(array $itemsList): string
  * @return string
  */
 
-function cleanInput(string $inputData):string {
+function cleanInput(string $inputData): string
+{
     $trimmedInput = trim($inputData);
     return htmlspecialchars($trimmedInput);
 

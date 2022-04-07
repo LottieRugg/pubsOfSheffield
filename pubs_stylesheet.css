@@ -83,9 +83,11 @@ label {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
-.open_fire_label{
+
+.open_fire_label {
     align-self: center;
 }
+
 .radio_button {
     width: 10%;
     justify-self: center;
@@ -109,14 +111,29 @@ label {
 
 }
 
-.error_message{
+.error_message {
     font-size: 15px;
     color: #FE7E6D;
 }
-.edit{
-    width:50%;
+
+.edit {
+    width: 50%;
     margin: 10px auto;
 }
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    padding: 10px;
+
+}
+
+a {
+    text-decoration: none;
+    color: #1a7599;
+}
+
 @media only screen and (max-width: 1086px) {
     .collection_set {
         grid-template-columns: 100%;
