@@ -84,5 +84,7 @@ $itemsList = getAllItems($db);
         </form>
     </div>
 </div>
+
+
 </body>
 </html>
