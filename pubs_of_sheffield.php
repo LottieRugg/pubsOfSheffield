@@ -10,6 +10,7 @@ $itemsList = getAllItems($db);
 <head>
 
     <link rel="stylesheet" href="pubs_stylesheet.css" type="text/css">
+    <script src="https://kit.fontawesome.com/40c7107b4d.js" crossorigin="anonymous"></script>
     <title>Pubs of Sheffield</title>
 </head>
 <body>
@@ -17,7 +18,7 @@ $itemsList = getAllItems($db);
 <h1>Pubs of Sheffield</h1>
 <h3> The definitive guide to the pubs of Sheffield </h3>
 
-<div class="collection_set">
+<div class="collection_set edit_collection">
     <?php
     echo selectItem($itemsList);
     ?>
@@ -38,7 +39,8 @@ $itemsList = getAllItems($db);
                 <input type="text" name="name" required class="input_item">
             </label>
             <label>What is the pub's address? <span class="error_message"><?php if (isset($_GET["error_address"])) {
-                    echo $_GET["error_address"];} ?>
+                        echo $_GET["error_address"];
+                    } ?>
             </span>
                 <input type="text" name="address" class="input_item">
             </label>
@@ -84,5 +86,7 @@ $itemsList = getAllItems($db);
         </form>
     </div>
 </div>
+
+
 </body>
 </html>
